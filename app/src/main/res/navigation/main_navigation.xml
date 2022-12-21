@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/donateFragment">
+
+    <fragment
+        android:id="@+id/donateFragment"
+        android:name="ie.wit.jobx.ui.donate.DonateFragment"
+        android:label="@string/action_donate"
+        tools:layout="@layout/fragment_donate" >
+        <action
+            android:id="@+id/action_donateFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="ie.wit.jobx.ui.report.ReportFragment"
+        android:label="@string/action_report"
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_reportFragment_to_donateFragment"
+            app:destination="@id/donateFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ie.wit.jobx.ui.about.AboutFragment"
+        android:label="@string/action_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/jobListFragment"
+        android:name="ie.wit.jobx.ui.jobList.JobListFragment"
+        android:label="fragment_job_list"
+        tools:layout="@layout/fragment_job_list" >
+        <action
+            android:id="@+id/action_jobListFragment_to_jobFragment"
+            app:destination="@id/jobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobFragment"
+        android:name="ie.wit.jobx.ui.job.JobFragment"
+        android:label="fragment_job"
+        tools:layout="@layout/fragment_job" >
+        <action
+            android:id="@+id/action_jobFragment_to_jobListFragment"
+            app:destination="@id/jobListFragment" />
+    </fragment>
+</navigation>

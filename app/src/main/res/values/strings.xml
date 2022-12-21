@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">DonationX</string>
+    <string name="donateTitle">Welcome Homer</string>
+    <string name="donateSubtitle">Please Give Generously</string>
+    <string name="donateButton">Donate</string>
+    <string name="paypal">PayPal</string>
+    <string name="direct">Direct</string>
+    <string name="amount">Amount</string>
+    <string name="total">Total so Far</string>
+    <string name="totalSoFar">$%d</string>
+    <string name="reportTitle">Donations Report</string>
+    <string name="defaultAmount">00</string>
+    <string name="defaultMethod">N/A</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="action_donate">Donate</string>
+    <string name="action_report">Report</string>
+
+    <string name="action_share">Share</string>
+    <string name="action_send">Send</string>
+    <string name="group_communicate">Communicate</string>
+
+    <string name="nav_header_title">DonationX (Lab)</string>
+    <string name="nav_header_subtitle">voteforhomer@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_about">About Us</string>
+    <string name="aboutus_title">Homer for President !!</string>
+    <string name="aboutus_message">Hi, I\'m Homer\n\nPlease vote for me.\n\n Please Please Please Please!!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="button_addJob">Add Job</string>
+    <string name="button_addContact">Add Contact</string>
+    <string name="hint_jobTitle">Job Title</string>
+    <string name="hint_jobDescription">Description</string>
+    <string name="hint_jobNetValue">Enter the Net Amount</string>
+    <string name="hint_firstName">First Name</string>
+    <string name="hint_lastName">Last Name</string>
+    <string name="hint_mobileNumber">Mobile Number</string>
+    <string name="hint_email">Email Address</string>
+    <string name="menu_addJob">Add</string>
+    <string name="menu_addCustomer">Add Customer</string>
+    <string name="menu_customerList">Customer List</string>
+    <string name="menu_cancelJob">Cancel</string>
+    <string name="menu_cancelCustomer">Cancel</string>
+    <string name="enter_job_title"> Please enter a Job Title </string>
+    <string name="save_job"> Save Job</string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_job_image">Select Job Image</string>
+    <string name="change_job_image">Change Job image</string>
+    <string name="button_location">Set Location</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="menu_deleteJob">Delete</string>
+    <string name="zero">0%</string>
+    <string name="reduced">13.5%</string>
+    <string name="full">23%</string>
+    <string name="enter_amount_net">Enter Net</string>
+    <string name="totalString">Total Gross Income:</string>
+    <string name="totalSoFarJob">€%.2f</string>
+    <string name="grossView">€%.2f</string>
+    <string name="enter_customer_name"> Please enter a name above </string>
+    <string name="save_customer"> Save Customer </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="donationsNotFound">No Donations Yet...\nGo Make a Donation!</string>
+    <string name="donationError">Error : Couldn\'t Make a Donation...</string>
+</resources>
