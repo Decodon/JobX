@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/donateFragment">
+    app:startDestination="@id/jobFragment">
 
     <fragment
         android:id="@+id/donateFragment"
@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_jobListFragment_to_jobFragment"
             app:destination="@id/jobFragment" />
+        <action
+            android:id="@+id/action_jobListFragment_to_jobDetailFragment"
+            app:destination="@id/jobDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobFragment"
@@ -48,6 +51,15 @@
         tools:layout="@layout/fragment_job" >
         <action
             android:id="@+id/action_jobFragment_to_jobListFragment"
+            app:destination="@id/jobListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobDetailFragment"
+        android:name="ie.wit.jobx.ui.detail.JobDetailFragment"
+        android:label="fragment_job_detail"
+        tools:layout="@layout/fragment_job_detail" >
+        <action
+            android:id="@+id/action_jobDetailFragment_to_jobListFragment"
             app:destination="@id/jobListFragment" />
     </fragment>
 </navigation>

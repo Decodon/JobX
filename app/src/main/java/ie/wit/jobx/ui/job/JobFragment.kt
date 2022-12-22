@@ -17,6 +17,8 @@ import ie.wit.jobx.R
 import ie.wit.jobx.databinding.FragmentJobBinding
 import ie.wit.jobx.main.MainXApp
 import ie.wit.jobx.models.JobModel
+import ie.wit.jobx.ui.jobList.JobListViewModel
+import ie.wit.jobx.ui.report.ReportViewModel
 import java.util.*
 
 
@@ -31,6 +33,7 @@ class JobFragment : Fragment() {
     val year = cal.get(Calendar.YEAR)
     val month = cal.get(Calendar.MONTH)
     val day = cal.get(Calendar.DAY_OF_MONTH)
+    var totalGross: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +85,7 @@ class JobFragment : Fragment() {
 
             jobViewModel.addJob(JobModel(title = title, description = description, net = net, vat = vat, gross = gross, date = date))
             }
+
         }
 
 
@@ -97,14 +101,6 @@ class JobFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _fragBinding = null
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
 
     private fun Double.round(decimals: Int): Double {
         var multiplier = 1.0
@@ -140,6 +136,21 @@ class JobFragment : Fragment() {
                 return NavigationUI.onNavDestinationSelected(menuItem,
                     requireView().findNavController())
             }       }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragBinding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val jobViewModel = ViewModelProvider(this).get(JobListViewModel::class.java)
+        jobViewModel.observableJobsList.observe(viewLifecycleOwner, Observer {
+            totalGross = jobViewModel.observableJobsList.value!!.sumOf { it.gross }
+        })
+        fragBinding.totalGrossSoFar.text = getString(R.string.totalSoFarJob,totalGross)
+        jobViewModel.load()
     }
 }
 

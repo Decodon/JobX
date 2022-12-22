@@ -40,7 +40,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_toEndOf="@+id/imageIcon"
-                android:text="Amount"
+                android:text="@{Double.toString(job.gross)}"
                 android:textSize="24sp"
                 tools:text="€1000" />
 
@@ -52,7 +52,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_toEndOf="@+id/paymentamount"
-                android:text="Method"
+                android:text="@{job.title}"
                 android:textSize="24sp"
                 tools:text="@string/paypal" />
 
