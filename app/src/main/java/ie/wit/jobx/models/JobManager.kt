@@ -46,4 +46,9 @@ object JobManager : JobStore {
     fun logAll() {
         jobs.forEach{ i("${it}") }
     }
+
+    override fun findById(id:Long) : JobModel? {
+        val foundJob: JobModel? = jobs.find { it.id == id }
+        return foundJob
+    }
 }

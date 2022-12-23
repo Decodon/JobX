@@ -1,5 +1,6 @@
 package ie.wit.jobx.ui.donate
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
@@ -102,6 +103,7 @@ class DonateFragment : Fragment() {
         _fragBinding = null
     }
 
+    @SuppressLint("StringFormatInvalid")
     override fun onResume() {
         super.onResume()
         val reportViewModel = ViewModelProvider(this).get(ReportViewModel::class.java)

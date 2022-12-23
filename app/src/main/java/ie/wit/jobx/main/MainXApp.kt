@@ -20,7 +20,5 @@ class MainXApp : Application() {
         //donationsStore = DonationMemStore()
         //jobsStore = JobMemStore()
         Timber.i("DonationX Application Started")
-        jobs.add(JobModel(1, "About one"))
-        jobs.add(JobModel(1, "About two"))
     }
 }

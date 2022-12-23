@@ -5,4 +5,5 @@ interface JobStore {
     fun create(job: JobModel)
     fun update(job: JobModel)
     fun delete(job: JobModel)
+    fun findById(id: Long) : JobModel?
 }

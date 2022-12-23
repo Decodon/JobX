@@ -7,6 +7,8 @@ import ie.wit.jobx.R
 import ie.wit.jobx.databinding.CardDonationBinding
 import ie.wit.jobx.models.DonationModel
 
+
+
 class DonationAdapter constructor(private var donations: List<DonationModel>)
     : RecyclerView.Adapter<DonationAdapter.MainHolder>() {
 

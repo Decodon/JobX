@@ -7,7 +7,12 @@ import ie.wit.jobx.R
 import ie.wit.jobx.databinding.CardJobBinding
 import ie.wit.jobx.models.JobModel
 
-class JobAdapter constructor(private var jobs: List<JobModel>)
+interface JobClickListener {
+    fun onJobClick(job: JobModel)
+}
+
+class JobAdapter constructor(private var jobs: List<JobModel>,
+                             private var listener: JobClickListener)
     : RecyclerView.Adapter<JobAdapter .MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -33,6 +38,7 @@ class JobAdapter constructor(private var jobs: List<JobModel>)
             binding.job = job
             //binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
             //Include this call to force the bindings to happen immediately
+            binding.root.setOnClickListener{ listener.onJobClick(job)}
             binding.executePendingBindings()
         }
     }

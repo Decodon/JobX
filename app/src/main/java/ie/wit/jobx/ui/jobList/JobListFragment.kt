@@ -9,11 +9,13 @@ import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.wit.jobx.R
 import ie.wit.jobx.adapters.DonationAdapter
 import ie.wit.jobx.adapters.JobAdapter
+import ie.wit.jobx.adapters.JobClickListener
 import ie.wit.jobx.databinding.FragmentJobListBinding
 import ie.wit.jobx.databinding.FragmentReportBinding
 import ie.wit.jobx.main.MainXApp
@@ -21,7 +23,7 @@ import ie.wit.jobx.models.DonationModel
 import ie.wit.jobx.models.JobModel
 import ie.wit.jobx.ui.report.ReportViewModel
 
-class JobListFragment : Fragment() {
+class JobListFragment : Fragment(), JobClickListener {
 
     lateinit var app: MainXApp
     private lateinit var jobListViewModel: JobListViewModel
@@ -50,7 +52,7 @@ class JobListFragment : Fragment() {
     }
 
     private fun render(jobsList: List<JobModel>) {
-        fragBinding.recyclerView.adapter = JobAdapter(jobsList)
+        fragBinding.recyclerView.adapter = JobAdapter(jobsList, this)
             }
 
 
@@ -78,5 +80,10 @@ class JobListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _fragBinding = null
+    }
+
+    override fun onJobClick(job: JobModel) {
+        val action = JobListFragmentDirections.actionJobListFragmentToJobDetailFragment(job.id)
+        findNavController().navigate(action)
     }
 }
