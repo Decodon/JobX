@@ -130,23 +130,23 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
-            android:id="@+id/editDonationButton"
+            android:id="@+id/editJobButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Edit"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/deleteDonationButton"
+            app:layout_constraintEnd_toStartOf="@+id/deleteJobButton"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/deleteDonationButton"
+            android:id="@+id/deleteJobButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editDonationButton" />
+            app:layout_constraintStart_toEndOf="@+id/editJobButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -41,6 +41,6 @@
             app:destination="@id/jobListFragment" />
         <argument
             android:name="jobid"
-            app:argType="long" />
+            app:argType="string" />
     </fragment>
 </navigation>

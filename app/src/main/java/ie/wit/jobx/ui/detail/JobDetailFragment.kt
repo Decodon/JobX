@@ -1,17 +1,18 @@
 package ie.wit.jobx.ui.detail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import ie.wit.jobx.R
 import ie.wit.jobx.databinding.FragmentJobDetailBinding
-import ie.wit.jobx.databinding.FragmentJobListBinding
+import ie.wit.jobx.ui.auth.LoggedInViewModel
+import ie.wit.jobx.ui.jobList.JobListViewModel
 
 class JobDetailFragment : Fragment() {
 
@@ -19,12 +20,12 @@ class JobDetailFragment : Fragment() {
     private lateinit var  detailViewModel: JobDetailViewModel
     private var _fragBinding: FragmentJobDetailBinding? = null
     private val fragBinding get() = _fragBinding!!
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
+    private val jobListViewModel : JobListViewModel by activityViewModels()
 
-    companion object {
-        fun newInstance() = JobDetailFragment()
-    }
-
-    private lateinit var viewModel: JobDetailViewModel
+//    companion object {
+//        fun newInstance() = JobDetailFragment()
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,19 @@ class JobDetailFragment : Fragment() {
 
         detailViewModel = ViewModelProvider(this).get(JobDetailViewModel::class.java)
         detailViewModel.observableJob.observe(viewLifecycleOwner, Observer { render() })
+
+        fragBinding.editJobButton.setOnClickListener {
+            detailViewModel.updateJob(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+                args.jobid, fragBinding.jobvm?.observableJob!!.value!!)
+            findNavController().navigateUp()
+        }
+
+        fragBinding.deleteJobButton.setOnClickListener {
+            jobListViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.email!!,
+                detailViewModel.observableJob.value?.uid!!)
+            findNavController().navigateUp()
+        }
+
         return root
     }
 
@@ -47,7 +61,8 @@ class JobDetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        detailViewModel.getJob(args.jobid)
+        detailViewModel.getJob(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+        args.jobid)
     }
 
     override fun onDestroyView() {

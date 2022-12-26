@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ import ie.wit.jobx.R
 import ie.wit.jobx.databinding.FragmentJobBinding
 import ie.wit.jobx.main.MainXApp
 import ie.wit.jobx.models.JobModel
+import ie.wit.jobx.ui.auth.LoggedInViewModel
 import ie.wit.jobx.ui.jobList.JobListViewModel
 
 import java.util.*
@@ -26,8 +28,9 @@ class JobFragment : Fragment() {
 
     lateinit var app: MainXApp
     private var _fragBinding: FragmentJobBinding? = null
-    // This property is only valid between onCreateView and onDestroyView.
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
     private val fragBinding get() = _fragBinding!!
+    private val jobListViewModel : JobListViewModel by activityViewModels()
     private lateinit var jobViewModel: JobViewModel
     val cal = Calendar.getInstance()
     val year = cal.get(Calendar.YEAR)
@@ -60,6 +63,18 @@ class JobFragment : Fragment() {
         return root;
     }
 
+    private fun render(status: Boolean) {
+        when (status) {
+            true -> {
+                view?.let {
+                    //Uncomment this if you want to immediately return to Report
+                    //findNavController().popBackStack()
+                }
+            }
+            false -> Toast.makeText(context,getString(R.string.donationError),Toast.LENGTH_LONG).show()
+        }
+    }
+
 
     private fun setButtonListener(layout: FragmentJobBinding) {
         layout.btnAdd.setOnClickListener {
@@ -83,23 +98,13 @@ class JobFragment : Fragment() {
 
             val date = layout.dateView.text.toString()
 
-            jobViewModel.addJob(JobModel(title = title, description = description, net = net, vat = vat, gross = gross, date = date))
+            if(layout.paymentAmount.text.isEmpty())
+                Toast.makeText(context,"Please enter a value for Net", Toast.LENGTH_LONG).show()
+            else {
+                jobViewModel.addJob(loggedInViewModel.liveFirebaseUser, JobModel(title = title, description = description, net = net, vat = vat, gross = gross, date = date, email = loggedInViewModel.liveFirebaseUser.value?.email!!))
             }
-
-        }
-
-
-    private fun render(status: Boolean) {
-        when (status) {
-            true -> {
-                view?.let {
-                    //Uncomment this if you want to immediately return to Report
-                    //findNavController().popBackStack()
-                }
             }
-            false -> Toast.makeText(context,getString(R.string.donationError),Toast.LENGTH_LONG).show()
         }
-    }
 
 
     private fun Double.round(decimals: Int): Double {
@@ -145,12 +150,8 @@ class JobFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val jobViewModel = ViewModelProvider(this).get(JobListViewModel::class.java)
-        jobViewModel.observableJobsList.observe(viewLifecycleOwner, Observer {
-            totalGross = jobViewModel.observableJobsList.value!!.sumOf { it.gross }
-        })
-        fragBinding.totalGrossSoFar.text = getString(R.string.totalSoFarJob,totalGross)
-        jobViewModel.load()
+        //totalGross = jobListViewModel.observableJobsList.value!!.sumOf { it.gross }
+        //fragBinding.totalGrossSoFar.text = String.format(getString(R.string.totalSoFarJob),totalGross)
     }
 }
 

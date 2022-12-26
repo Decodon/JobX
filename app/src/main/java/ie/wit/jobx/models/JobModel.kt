@@ -19,7 +19,8 @@ data class JobModel(var uid: String? = "",
                     var net: Double = 0.00,
                     var vat: Double = 0.00,
                     var gross: Double = 0.00,
-                    var zoom: Float = 0f) : Parcelable
+                    var zoom: Float = 0f,
+                    var email: String? = "joe@bloggs.com") : Parcelable
 
 {
     @Exclude
@@ -31,7 +32,8 @@ data class JobModel(var uid: String? = "",
             "date" to date,
             "net" to net,
             "vat" to vat,
-            "gross" to gross
+            "gross" to gross,
+            "email" to email
         )
     }
 }
