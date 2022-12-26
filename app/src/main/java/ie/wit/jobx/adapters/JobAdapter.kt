@@ -11,7 +11,7 @@ interface JobClickListener {
     fun onJobClick(job: JobModel)
 }
 
-class JobAdapter constructor(private var jobs: List<JobModel>,
+class JobAdapter constructor(private var jobs: ArrayList<JobModel>,
                              private var listener: JobClickListener)
     : RecyclerView.Adapter<JobAdapter .MainHolder>() {
 
@@ -27,6 +27,11 @@ class JobAdapter constructor(private var jobs: List<JobModel>,
         holder.bind(job)
     }
 
+    fun removeAt(position: Int) {
+        jobs.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     override fun getItemCount(): Int = jobs.size
 
     inner class MainHolder(val binding : CardJobBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -36,7 +41,8 @@ class JobAdapter constructor(private var jobs: List<JobModel>,
             //binding.paymentmethod.text = donation.paymentmethod
 
             binding.job = job
-            //binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            binding.root.tag = job
+            binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
             //Include this call to force the bindings to happen immediately
             binding.root.setOnClickListener{ listener.onJobClick(job)}
             binding.executePendingBindings()

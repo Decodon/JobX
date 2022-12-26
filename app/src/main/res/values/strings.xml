@@ -62,13 +62,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="donationsNotFound">No Donations Yet...\nGo Make a Donation!</string>
+    <string name="jobsNotFound">No Jobs Yet...\nGo Make a Donation!</string>
     <string name="donationError">Error : Couldn\'t Make a Donation...</string>
     <string name="donationDetails">Donation Details</string>
     <string name="amt">Gross :</string>
     <string name="date">Date :</string>
     <string name="title">Title :</string>
     <string name="description">Description :</string>
+
+    <string name="messageLoading">Please Wait while the Jobs are Loading...</string>
 
 
 
