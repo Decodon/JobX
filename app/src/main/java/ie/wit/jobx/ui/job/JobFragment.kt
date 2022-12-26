@@ -78,10 +78,10 @@ class JobFragment : Fragment() {
 
     private fun setButtonListener(layout: FragmentJobBinding) {
         layout.btnAdd.setOnClickListener {
-            val title = layout.jobTitle.text.toString()
-            val description = layout.description.text.toString()
-            val netString = layout.paymentAmount.text.toString()
-            val net = netString.toDouble()
+            var title = layout.jobTitle.text.toString()
+            var description = layout.description.text.toString()
+            var netString = layout.paymentAmount.text.toString()
+            var net = netString.toDouble()
 
             var vatRate: Double = 0.00
 
@@ -93,10 +93,10 @@ class JobFragment : Fragment() {
                 vatRate = 0.23
             }
 
-            val vat = (vatRate * net).round(2)
-            val gross = (net + vat).round(2)
+            var vat = (vatRate * net).round(2)
+            var gross = (net + vat).round(2)
 
-            val date = layout.dateView.text.toString()
+            var date = layout.dateView.text.toString()
 
             if(layout.paymentAmount.text.isEmpty())
                 Toast.makeText(context,"Please enter a value for Net", Toast.LENGTH_LONG).show()
