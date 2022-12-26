@@ -18,7 +18,7 @@ import ie.wit.jobx.databinding.FragmentJobBinding
 import ie.wit.jobx.main.MainXApp
 import ie.wit.jobx.models.JobModel
 import ie.wit.jobx.ui.jobList.JobListViewModel
-import ie.wit.jobx.ui.report.ReportViewModel
+
 import java.util.*
 
 
@@ -47,7 +47,7 @@ class JobFragment : Fragment() {
     ): View? {
         _fragBinding = FragmentJobBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-        activity?.title = getString(R.string.action_donate)
+        activity?.title = getString(R.string.action_job)
         //setupMenu()
 
         jobViewModel = ViewModelProvider(this).get(JobViewModel::class.java)
@@ -129,7 +129,7 @@ class JobFragment : Fragment() {
             }
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_donate, menu)
+                menuInflater.inflate(R.menu.menu_job_list, menu)
             }
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 // Validate and handle the selected menu item

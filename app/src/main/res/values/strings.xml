@@ -12,15 +12,15 @@
     <string name="defaultAmount">00</string>
     <string name="defaultMethod">N/A</string>
     <string name="enter_amount">Enter Amount</string>
-    <string name="action_donate">Donate</string>
-    <string name="action_report">Report</string>
+    <string name="action_job">Job</string>
+    <string name="action_job_list">Job List</string>
 
     <string name="action_share">Share</string>
     <string name="action_send">Send</string>
     <string name="group_communicate">Communicate</string>
 
-    <string name="nav_header_title">DonationX (Lab)</string>
-    <string name="nav_header_subtitle">voteforhomer@android.com</string>
+    <string name="nav_header_title">JobX</string>
+    <string name="nav_header_subtitle">for all you recording needs</string>
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="action_about">About Us</string>
@@ -65,8 +65,8 @@
     <string name="donationsNotFound">No Donations Yet...\nGo Make a Donation!</string>
     <string name="donationError">Error : Couldn\'t Make a Donation...</string>
     <string name="donationDetails">Donation Details</string>
-    <string name="amt">Amount :</string>
-    <string name="payment">Payment :</string>
-    <string name="message">Message :</string>
-    <string name="upvotes">UpVotes :</string>
+    <string name="amt">Gross :</string>
+    <string name="date">Date :</string>
+    <string name="title">Title :</string>
+    <string name="description">Description :</string>
 </resources>

@@ -13,15 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.wit.jobx.R
-import ie.wit.jobx.adapters.DonationAdapter
 import ie.wit.jobx.adapters.JobAdapter
 import ie.wit.jobx.adapters.JobClickListener
 import ie.wit.jobx.databinding.FragmentJobListBinding
-import ie.wit.jobx.databinding.FragmentReportBinding
 import ie.wit.jobx.main.MainXApp
-import ie.wit.jobx.models.DonationModel
 import ie.wit.jobx.models.JobModel
-import ie.wit.jobx.ui.report.ReportViewModel
 
 class JobListFragment : Fragment(), JobClickListener {
 
@@ -63,7 +59,7 @@ class JobListFragment : Fragment(), JobClickListener {
             }
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_report, menu)
+                menuInflater.inflate(R.menu.menu_job, menu)
             }
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 // Validate and handle the selected menu item
