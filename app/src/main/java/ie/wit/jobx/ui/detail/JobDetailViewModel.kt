@@ -11,7 +11,7 @@ import timber.log.Timber
 class JobDetailViewModel : ViewModel() {
     private val job = MutableLiveData<JobModel>()
 
-    var observableJob: LiveData<JobModel>
+    var  observableJob: LiveData<JobModel>
         get() = job
         set(value) {job.value = value.value}
 

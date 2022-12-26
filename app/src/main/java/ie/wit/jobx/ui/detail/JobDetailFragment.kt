@@ -44,7 +44,7 @@ class JobDetailFragment : Fragment() {
         }
 
         fragBinding.deleteJobButton.setOnClickListener {
-            jobListViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.email!!,
+            jobListViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.uid!!,
                 detailViewModel.observableJob.value?.uid!!)
             findNavController().navigateUp()
         }
