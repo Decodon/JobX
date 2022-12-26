@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993812801456",
+    "project_id": "jobx-8750f",
+    "storage_bucket": "jobx-8750f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993812801456:android:fa8bccee3f46a534b89875",
+        "android_client_info": {
+          "package_name": "ie.wit.jobx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993812801456-2tsbgid8jig3qpd26dcaa2dte2n8i2ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp_bchjbqD4NsXtcHWUIJNYwzm-8xX6JA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993812801456-2tsbgid8jig3qpd26dcaa2dte2n8i2ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
