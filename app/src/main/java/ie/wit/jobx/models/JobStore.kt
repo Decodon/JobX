@@ -1,9 +1,20 @@
 package ie.wit.jobx.models
 
+import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseUser
+
 interface JobStore {
-    fun findAll(): List<JobModel>
-    fun create(job: JobModel)
-    fun update(job: JobModel)
-    fun delete(job: JobModel)
-    fun findById(id: Long) : JobModel?
+    fun findAll(jobsList:
+                MutableLiveData<List<JobModel>>
+    )
+    fun findAll(userid:String,
+                jobsList:
+                MutableLiveData<List<JobModel>>
+    )
+    fun findById(userid:String, jobid: String,
+                 job: MutableLiveData<JobModel>
+    )
+    fun create(firebaseUser: MutableLiveData<FirebaseUser>, job: JobModel)
+    fun delete(userid:String, jobid: String)
+    fun update(userid:String, jobid: String, job: JobModel)
 }

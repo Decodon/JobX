@@ -7,7 +7,6 @@ import ie.wit.jobx.models.JobManager
 import ie.wit.jobx.models.JobModel
 
 class JobDetailViewModel : ViewModel() {
-
     private val job = MutableLiveData<JobModel>()
 
     val observableJob: LiveData<JobModel>

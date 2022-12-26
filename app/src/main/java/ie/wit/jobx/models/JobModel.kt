@@ -2,11 +2,14 @@ package ie.wit.jobx.models
 
 import android.net.Uri
 import android.os.Parcelable
+import com.google.firebase.database.Exclude
+import com.google.firebase.database.IgnoreExtraProperties
 import kotlinx.parcelize.Parcelize
 
 
+@IgnoreExtraProperties
 @Parcelize
-data class JobModel(var id: Long = 0,
+data class JobModel(var uid: String? = "",
                     var title: String = "",
                     var description: String = "",
                     var date: String = "",
@@ -17,6 +20,21 @@ data class JobModel(var id: Long = 0,
                     var vat: Double = 0.00,
                     var gross: Double = 0.00,
                     var zoom: Float = 0f) : Parcelable
+
+{
+    @Exclude
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "uid" to uid,
+            "title" to title,
+            "description" to description,
+            "date" to date,
+            "net" to net,
+            "vat" to vat,
+            "gross" to gross
+        )
+    }
+}
 
 /**
  * Location data class
