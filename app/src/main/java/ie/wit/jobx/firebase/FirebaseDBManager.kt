@@ -106,5 +106,26 @@ object FirebaseDBManager : JobStore {
         database.updateChildren(childUpdate)
     }
 
+    fun updateImageRef(userid: String,imageUri: String) {
+
+        val userJobs = database.child("user-jobs").child(userid)
+        val allJobs = database.child("jobs")
+
+        userJobs.addListenerForSingleValueEvent(
+            object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {}
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    snapshot.children.forEach {
+                        //Update Users imageUri
+                        it.ref.child("profilepic").setValue(imageUri)
+                        //Update all jobs that match 'it'
+                        val job = it.getValue(JobModel::class.java)
+                        allJobs.child(job!!.uid!!)
+                            .child("profilepic").setValue(imageUri)
+                    }
+                }
+            })
+    }
+
 }
 

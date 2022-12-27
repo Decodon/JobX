@@ -2,10 +2,13 @@ package ie.wit.jobx.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.wit.jobx.R
 import ie.wit.jobx.databinding.CardJobBinding
 import ie.wit.jobx.models.JobModel
+import ie.wit.jobx.utils.customTransformation
 
 interface JobClickListener {
     fun onJobClick(job: JobModel)
@@ -41,14 +44,13 @@ class JobAdapter constructor(private var jobs: ArrayList<JobModel>,
         val readOnlyRow = readOnly
 
         fun bind(job: JobModel, listener: JobClickListener) {
-            //binding.paymentamount.text = job.amount.toString()
-            //binding.paymentmethod.text = job.paymentmethod
-            
-
             binding.job = job
             binding.root.tag = job
-            binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
-            //Include this call to force the bindings to happen immediately
+            Picasso.get().load(job.profilepic.toUri())
+                .resize(200, 200)
+                .transform(customTransformation())
+                .centerCrop()
+                .into(binding.imageIcon)
             binding.root.setOnClickListener{ listener.onJobClick(job)}
             binding.executePendingBindings()
         }
