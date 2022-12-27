@@ -13,4 +13,11 @@
         android:title=""
         app:actionLayout="@layout/togglebutton_layout"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/toggleDarkMode"
+        android:title=""
+        app:actionLayout="@layout/togglebutton2_layout"
+        app:showAsAction="always" />
+
 </menu>

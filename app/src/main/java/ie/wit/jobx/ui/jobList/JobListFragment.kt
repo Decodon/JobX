@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
@@ -113,6 +114,17 @@ class JobListFragment : Fragment(), JobClickListener {
                 toggleDonations.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) jobListViewModel.loadAll()
                     else jobListViewModel.load()
+                }
+
+
+                val item2 = menu.findItem(R.id.toggleDarkMode) as MenuItem
+                item2.setActionView(R.layout.togglebutton2_layout)
+                val toggleDarkMode: SwitchCompat = item.actionView!!.findViewById(R.id.toggleButton1)!!
+                toggleDarkMode.isChecked = false
+
+                toggleDarkMode.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
             }
 
