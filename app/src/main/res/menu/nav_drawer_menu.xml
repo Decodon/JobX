@@ -4,36 +4,27 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/donateFragment"
-            android:icon="@drawable/ic_menu_donate"
-            android:title="@string/action_donate" />
+
+            android:id="@+id/jobFragment"
+            android:icon="@drawable/ic_job"
+            android:title="@string/action_job" />
         <item
-            android:id="@+id/reportFragment"
-            android:icon="@drawable/ic_menu_donate"
-            android:title="@string/action_report" />
+            android:id="@+id/jobListFragment"
+            android:icon="@drawable/ic_list"
+            android:title="@string/action_job_list" />
         <item
             android:id="@+id/aboutusFragment"
-            android:icon="@drawable/ic_menu_donate"
+            android:icon="@drawable/ic_info"
             android:title="@string/action_about" />
     </group>
-    <item android:title="@string/group_communicate">
+
+    <item android:title="Access Control">
         <menu>
             <item
-                android:id="@+id/jobFragment"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_share" />
-            <item
-                android:id="@+id/jobListFragment"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_send" />
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_send" />
+                android:id="@+id/signout"
+                android:icon="@android:drawable/ic_menu_revert"
+                android:onClick="signOut"
+                android:title="@string/sign_out" />
         </menu>
     </item>
 </menu>

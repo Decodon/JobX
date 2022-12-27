@@ -1,49 +1,50 @@
 package ie.wit.jobx.models
 
+import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseUser
 import timber.log.Timber.i
 
-var lastIda = 0L
+var lastId = 0L
 
-internal fun getIda(): Long {
-    return lastIda++
+internal fun getId(): Long {
+    return lastId++
 }
 
 object JobManager : JobStore {
 
     val jobs = ArrayList<JobModel>()
 
-    override fun findAll(): List<JobModel> {
-        return jobs
-    }
 
-    override fun create(job: JobModel) {
-        job.id = getIda()
-        jobs.add(job)
-        logAll()
-    }
 
-    override fun update(job: JobModel) {
-        var foundJob: JobModel? = jobs.find { j -> j.id == job.id }
-        if (foundJob != null) {
-            foundJob.title = job.title
-            foundJob.description = job.description
-            foundJob.net = job.net
-            foundJob.vat = job.vat
-            foundJob.gross = job.gross
-            foundJob.date = job.date
-            foundJob.image = job.image
-            foundJob.lat = job.lat
-            foundJob.lng = job.lng
-            foundJob.zoom = job.zoom
-            logAll()
-        }
-    }
 
-    override fun delete(job: JobModel) {
-        jobs.remove(job)
-    }
 
     fun logAll() {
         jobs.forEach{ i("${it}") }
     }
+
+    override fun findAll(jobsList: MutableLiveData<List<JobModel>>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun findAll(userid: String, jobsList: MutableLiveData<List<JobModel>>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun findById(userid: String, jobid: String, job: MutableLiveData<JobModel>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun create(firebaseUser: MutableLiveData<FirebaseUser>, job: JobModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun delete(userid: String, jobid: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun update(userid: String, jobid: String, job: JobModel) {
+        TODO("Not yet implemented")
+    }
+
+
 }
