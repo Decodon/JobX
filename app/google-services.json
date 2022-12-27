@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "993812801456-2tsbgid8jig3qpd26dcaa2dte2n8i2ie.apps.googleusercontent.com",
+          "client_id": "993812801456-fnvcoagn367pq0bvv5ghbtls628sdve1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.wit.jobx",
+            "certificate_hash": "6bbe68915b7ee4c1390568729f5d8c5dfc7e453c"
+          }
+        },
+        {
+          "client_id": "993812801456-bqomegmrfus0fb2msqt4n03nrjauiefl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
