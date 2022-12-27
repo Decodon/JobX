@@ -13,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseUser
@@ -30,6 +31,7 @@ class Home : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var loggedInViewModel : LoggedInViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +41,7 @@ class Home : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        val navBottomView : BottomNavigationView = findViewById(R.id.bottom_navigation_view)
         val navController = findNavController(R.id.nav_host_fragment)
 
         // Passing each menu ID as a set of Ids because each
@@ -50,6 +53,7 @@ class Home : AppCompatActivity() {
 
         val navView = homeBinding.navView
         navView.setupWithNavController(navController)
+        navBottomView.setupWithNavController(navController)
     }
 
     public override fun onStart() {
