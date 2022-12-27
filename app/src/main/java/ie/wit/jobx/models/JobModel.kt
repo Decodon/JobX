@@ -36,6 +36,9 @@ data class JobModel(var uid: String? = "",
             "gross" to gross,
             "email" to email,
             "profilepic" to profilepic,
+            "lat" to lat,
+            "lng" to lng,
+            "zoom" to zoom
         )
     }
 }

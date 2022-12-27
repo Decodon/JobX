@@ -46,6 +46,9 @@ class JobFragment : Fragment() {
     val month = cal.get(Calendar.MONTH)
     val day = cal.get(Calendar.DAY_OF_MONTH)
     var totalGross: Double = 0.0
+    var job = JobModel()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -115,15 +118,21 @@ class JobFragment : Fragment() {
             if(layout.paymentAmount.text.isEmpty())
                 Toast.makeText(context,"Please enter a value for Net", Toast.LENGTH_LONG).show()
             else {
-                jobViewModel.addJob(loggedInViewModel.liveFirebaseUser, JobModel(title = title, description = description, net = net, vat = vat, gross = gross, date = date, email = loggedInViewModel.liveFirebaseUser.value?.email!!))
+                jobViewModel.addJob(loggedInViewModel.liveFirebaseUser, JobModel(title = title, description = description, net = net, vat = vat, gross = gross, date = date, email = loggedInViewModel.liveFirebaseUser.value?.email!!, lat = job.lat, lng = job.lng, zoom = job.zoom))
             }
             }
         }
 
     private fun setLocationButtonListener(layout: FragmentJobBinding){
         layout.jobLocation.setOnClickListener{
-            i ("Set Location Pressed")
+            var location = Location(51.6203, -8.9055, 15f)
+            if (job.zoom != 0f) {
+                location.lat = job.lat
+                location.lng = job.lng
+                location.zoom = job.zoom
+            }
             val launcherIntent = Intent(context, MapActivity::class.java)
+                .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
     }
@@ -192,8 +201,9 @@ class JobFragment : Fragment() {
                             Timber.i("Location ${result.data.toString()}")
                             val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             Timber.i("Location == $location")
-                            location.lat = location.lat
-                            location.lng = location.lng
+                            job.lat = location.lat
+                            job.lng = location.lng
+                            job.zoom = location.zoom
                         } // end of if
                     }
                     AppCompatActivity.RESULT_CANCELED -> { } else -> { }
