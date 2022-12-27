@@ -6,37 +6,18 @@
         <item
 
             android:id="@+id/jobFragment"
-            android:icon="@drawable/ic_menu_donate"
+            android:icon="@drawable/ic_job"
             android:title="@string/action_job" />
         <item
             android:id="@+id/jobListFragment"
-            android:icon="@drawable/ic_menu_donate"
+            android:icon="@drawable/ic_list"
             android:title="@string/action_job_list" />
         <item
             android:id="@+id/aboutusFragment"
-            android:icon="@drawable/ic_menu_donate"
+            android:icon="@drawable/ic_info"
             android:title="@string/action_about" />
     </group>
-    <item android:title="@string/group_communicate">
-        <menu>
-            <item
-                android:id="@+id/empty1Fragment"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_share" />
-            <item
-                android:id="@+id/empty2Fragment"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_send" />
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_donate"
-                android:title="@string/action_send" />
-        </menu>
-    </item>
+
     <item android:title="Access Control">
         <menu>
             <item

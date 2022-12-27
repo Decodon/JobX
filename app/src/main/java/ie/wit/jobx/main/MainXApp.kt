@@ -15,6 +15,6 @@ class MainXApp : Application() {
         Timber.plant(Timber.DebugTree())
         //donationsStore = DonationMemStore()
         //jobsStore = JobMemStore()
-        Timber.i("DonationX Application Started")
+        Timber.i("JobX Application Started")
     }
 }
