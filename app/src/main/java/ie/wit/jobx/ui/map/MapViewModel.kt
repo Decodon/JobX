@@ -1,19 +1,15 @@
-package ie.wit.jobx.ui.jobList
+package ie.wit.jobx.ui.map
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
-import ie.wit.jobx.databinding.FragmentJobListBinding
 import ie.wit.jobx.firebase.FirebaseDBManager
-import ie.wit.jobx.main.MainXApp
-import ie.wit.jobx.models.JobManager
 import ie.wit.jobx.models.JobModel
 import timber.log.Timber
 import java.lang.Exception
 
-class JobListViewModel : ViewModel() {
-
+class MapViewModel : ViewModel() {
     private val jobsList = MutableLiveData<List<JobModel>>()
 
     var readOnly = MutableLiveData(false)
@@ -59,7 +55,5 @@ class JobListViewModel : ViewModel() {
             Timber.i("Report LoadAll Error : $e.message")
         }
     }
-
-
 
 }

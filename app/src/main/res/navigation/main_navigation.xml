@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_jobFragment_to_jobListFragment"
             app:destination="@id/jobListFragment" />
+        <action
+            android:id="@+id/action_jobFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobDetailFragment"
@@ -42,5 +45,14 @@
         <argument
             android:name="jobid"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="ie.wit.jobx.ui.map.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_jobFragment"
+            app:destination="@id/jobFragment" />
     </fragment>
 </navigation>
