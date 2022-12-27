@@ -89,8 +89,8 @@ class JobDetailFragment : Fragment() {
 
 
     private fun render() {
-        fragBinding.editMessage.setText("A Message")
-        fragBinding.editUpvotes.setText("0")
+//        fragBinding.editMessage.setText("A Message")
+//        fragBinding.editUpvotes.setText("0")
         fragBinding.jobvm = detailViewModel
     }
 

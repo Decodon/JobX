@@ -60,4 +60,6 @@ class JobListViewModel : ViewModel() {
         }
     }
 
+
+
 }
