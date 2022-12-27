@@ -27,6 +27,7 @@ import ie.wit.jobx.R
 import ie.wit.jobx.databinding.HomeBinding
 import ie.wit.jobx.databinding.NavHeaderBinding
 import ie.wit.jobx.firebase.FirebaseImageManager
+import ie.wit.jobx.models.Location
 import ie.wit.jobx.ui.auth.LoggedInViewModel
 import ie.wit.jobx.ui.auth.Login
 import ie.wit.jobx.utils.customTransformation
@@ -43,7 +44,7 @@ class Home : AppCompatActivity() {
     private lateinit var loggedInViewModel : LoggedInViewModel
     private lateinit var headerView : View
     private lateinit var intentLauncher : ActivityResultLauncher<Intent>
-
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +86,7 @@ class Home : AppCompatActivity() {
             }
         })
         registerImagePickerCallback()
+        registerLocationPickerCallback()
     }
 
     private fun updateNavHeader(currentUser: FirebaseUser) {
@@ -160,4 +162,24 @@ class Home : AppCompatActivity() {
                 }
             }
     }
+
+    private fun registerLocationPickerCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                when(result.resultCode){
+                    AppCompatActivity.RESULT_OK -> {
+                        if (result.data != null) {
+                            Timber.i("Location ${result.data.toString()}")
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
+                            Timber.i("Location == $location")
+                            location.lat = location.lat
+                            location.lng = location.lng
+                        } // end of if
+                    }
+                    AppCompatActivity.RESULT_CANCELED -> { } else -> { }
+                }
+            }
+    }
+
+
 }

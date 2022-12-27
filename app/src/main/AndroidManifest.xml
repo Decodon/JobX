@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <application
-        android:name="ie.wit.jobx.main.MainXApp"
+        android:name=".main.MainXApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -30,7 +30,7 @@
             android:value="${MAPS_API_KEY}"/>
 
         <activity
-            android:name=".ui.MapActivity"
+            android:name=".MapActivity"
             android:exported="false"
             android:label="@string/title_activity_map" />
 
@@ -47,7 +47,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".ui.home.Home"
             android:exported="true" >

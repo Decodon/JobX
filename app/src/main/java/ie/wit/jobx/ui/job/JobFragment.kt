@@ -1,10 +1,14 @@
 package ie.wit.jobx.ui.job
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -14,12 +18,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import ie.wit.jobx.MapActivity
 import ie.wit.jobx.R
 import ie.wit.jobx.databinding.FragmentJobBinding
 import ie.wit.jobx.main.MainXApp
 import ie.wit.jobx.models.JobModel
+import ie.wit.jobx.models.Location
 import ie.wit.jobx.ui.auth.LoggedInViewModel
 import ie.wit.jobx.ui.jobList.JobListViewModel
+import timber.log.Timber
+import timber.log.Timber.i
 
 import java.util.*
 
@@ -32,6 +40,7 @@ class JobFragment : Fragment() {
     private val fragBinding get() = _fragBinding!!
     private val jobListViewModel : JobListViewModel by activityViewModels()
     private lateinit var jobViewModel: JobViewModel
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     val cal = Calendar.getInstance()
     val year = cal.get(Calendar.YEAR)
     val month = cal.get(Calendar.MONTH)
@@ -39,6 +48,7 @@ class JobFragment : Fragment() {
     var totalGross: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         app = activity?.application as MainXApp
     }
@@ -57,8 +67,12 @@ class JobFragment : Fragment() {
         jobViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
                 status -> status?.let { render(status) }
         })
+
+        registerLocationPickerCallback()
         setButtonListener(fragBinding)
         setOnClickListener(fragBinding)
+        setLocationButtonListener(fragBinding)
+        setImageButtonListener(fragBinding)
         setupMenu()
         return root;
     }
@@ -106,6 +120,20 @@ class JobFragment : Fragment() {
             }
         }
 
+    private fun setLocationButtonListener(layout: FragmentJobBinding){
+        layout.jobLocation.setOnClickListener{
+            i ("Set Location Pressed")
+            val launcherIntent = Intent(context, MapActivity::class.java)
+            mapIntentLauncher.launch(launcherIntent)
+        }
+    }
+
+    private fun setImageButtonListener(layout: FragmentJobBinding){
+        layout.chooseImage.setOnClickListener {
+            i ("Set Location Pressed")
+        }
+    }
+
 
     private fun Double.round(decimals: Int): Double {
         var multiplier = 1.0
@@ -151,7 +179,26 @@ class JobFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         //totalGross = jobListViewModel.observableJobsList.value!!.sumOf { it.gross }
-        //fragBinding.totalGrossSoFar.text = String.format(getString(R.string.totalSoFarJob),totalGross)
+        fragBinding.totalGrossSoFar.text = String.format(getString(R.string.totalSoFarJob),totalGross)
+    }
+
+
+    private fun registerLocationPickerCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                when(result.resultCode){
+                    AppCompatActivity.RESULT_OK -> {
+                        if (result.data != null) {
+                            Timber.i("Location ${result.data.toString()}")
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
+                            Timber.i("Location == $location")
+                            location.lat = location.lat
+                            location.lng = location.lng
+                        } // end of if
+                    }
+                    AppCompatActivity.RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 }
 
