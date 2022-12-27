@@ -3,8 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/jobListFragment"
+        android:id="@+id/jobFragment"
+        android:icon="@drawable/ic_home"
         android:orderInCategory="100"
-        android:title="About"
+        android:title="Home"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/jobListFragment"
+        android:icon="@drawable/ic_list"
+        android:orderInCategory="100"
+        android:title="Job List"
         app:showAsAction="never" />
 </menu>
