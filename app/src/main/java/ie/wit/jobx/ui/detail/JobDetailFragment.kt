@@ -1,9 +1,15 @@
 package ie.wit.jobx.ui.detail
 
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -22,10 +28,13 @@ class JobDetailFragment : Fragment() {
     private val fragBinding get() = _fragBinding!!
     private val loggedInViewModel : LoggedInViewModel by activityViewModels()
     private val jobListViewModel : JobListViewModel by activityViewModels()
+    lateinit var camera_open_id: Button
+    lateinit var click_image_id: ImageView
 
-//    companion object {
-//        fun newInstance() = JobDetailFragment()
-//    }
+    companion object {
+        fun newInstance() = JobDetailFragment()
+        private const val pic_id = 123
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +45,15 @@ class JobDetailFragment : Fragment() {
 
         detailViewModel = ViewModelProvider(this).get(JobDetailViewModel::class.java)
         detailViewModel.observableJob.observe(viewLifecycleOwner, Observer { render() })
+
+        fragBinding.buttonEmail.setOnClickListener{
+            email(requireContext(),
+                listOf(fragBinding.jobvm?.observableJob!!.value!!.email, "decodon88@gmail.com") as List<String>,
+                (fragBinding.jobvm?.observableJob!!.value!!.title),
+                "Work completed on : " + (fragBinding.jobvm?.observableJob!!.value!!.date) + "\n"
+                        + "Description of work : " + (fragBinding.jobvm?.observableJob!!.value!!.description) + "\n"
+                        + "Gross amount of work : " + (fragBinding.jobvm?.observableJob!!.value!!.gross))
+        }
 
         fragBinding.editJobButton.setOnClickListener {
             detailViewModel.updateJob(loggedInViewModel.liveFirebaseUser.value?.uid!!,
@@ -49,7 +67,24 @@ class JobDetailFragment : Fragment() {
             findNavController().navigateUp()
         }
 
+        camera_open_id = fragBinding.cameraButton
+        click_image_id = fragBinding.clickImage
+
+        camera_open_id.setOnClickListener {
+            val camera_intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(camera_intent, pic_id)
+        }
+
         return root
+    }
+
+    private fun email(context: Context, emailReceiver: List<String>, title: String, message: String){
+        val email = Intent(Intent.ACTION_SEND)
+        email.type = "plain/text"
+        email.putExtra(Intent.EXTRA_EMAIL, emailReceiver.toTypedArray())
+        email.putExtra(Intent.EXTRA_SUBJECT, title)
+        email.putExtra(Intent.EXTRA_TEXT, message)
+        context.startActivity(Intent.createChooser(email,"Select email app"))
     }
 
 
@@ -70,4 +105,12 @@ class JobDetailFragment : Fragment() {
         _fragBinding = null
     }
 
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == pic_id) {
+            val photo = data!!.extras!!["data"] as Bitmap?
+            click_image_id.setImageBitmap(photo)
+        }
+    }
 }

@@ -17,7 +17,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode 1
-        versionName "1.7"
+        versionName "1.10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -80,5 +80,4 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-
 }
