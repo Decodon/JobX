@@ -17,10 +17,14 @@
         tools:layout="@layout/fragment_job_list" >
         <action
             android:id="@+id/action_jobListFragment_to_jobFragment"
-            app:destination="@id/jobFragment" />
+            app:destination="@id/jobFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_jobListFragment_to_jobDetailFragment"
-            app:destination="@id/jobDetailFragment" />
+            app:destination="@id/jobDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/jobFragment"
@@ -29,7 +33,9 @@
         tools:layout="@layout/fragment_job" >
         <action
             android:id="@+id/action_jobFragment_to_jobListFragment"
-            app:destination="@id/jobListFragment" />
+            app:destination="@id/jobListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/jobDetailFragment"
@@ -38,7 +44,9 @@
         tools:layout="@layout/fragment_job_detail" >
         <action
             android:id="@+id/action_jobDetailFragment_to_jobListFragment"
-            app:destination="@id/jobListFragment" />
+            app:destination="@id/jobListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="jobid"
             app:argType="string" />
