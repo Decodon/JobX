@@ -12,19 +12,20 @@ interface JobClickListener {
 }
 
 class JobAdapter constructor(private var jobs: ArrayList<JobModel>,
-                             private var listener: JobClickListener)
-    : RecyclerView.Adapter<JobAdapter .MainHolder>() {
+                                  private val listener: JobClickListener,
+                                  private val readOnly: Boolean)
+    : RecyclerView.Adapter<JobAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardJobBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return MainHolder(binding)
+        return MainHolder(binding,readOnly)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val job = jobs[holder.adapterPosition]
-        holder.bind(job)
+        holder.bind(job,listener)
     }
 
     fun removeAt(position: Int) {
@@ -34,11 +35,15 @@ class JobAdapter constructor(private var jobs: ArrayList<JobModel>,
 
     override fun getItemCount(): Int = jobs.size
 
-    inner class MainHolder(val binding : CardJobBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MainHolder(val binding : CardJobBinding, private val readOnly : Boolean) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(job: JobModel) {
-            //binding.paymentamount.text = donation.amount.toString()
-            //binding.paymentmethod.text = donation.paymentmethod
+        val readOnlyRow = readOnly
+
+        fun bind(job: JobModel, listener: JobClickListener) {
+            //binding.paymentamount.text = job.amount.toString()
+            //binding.paymentmethod.text = job.paymentmethod
+            
 
             binding.job = job
             binding.root.tag = job

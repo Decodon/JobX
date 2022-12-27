@@ -16,13 +16,15 @@ class JobListViewModel : ViewModel() {
 
     private val jobsList = MutableLiveData<List<JobModel>>()
 
+    var readOnly = MutableLiveData(false)
+
     val observableJobsList: LiveData<List<JobModel>>
         get() = jobsList
 
 
     var liveFirebaseUser = MutableLiveData<FirebaseUser>()
 
-    var readOnly = MutableLiveData(false)
+
 
     init {
         load()

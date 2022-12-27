@@ -125,7 +125,7 @@ class JobListFragment : Fragment(), JobClickListener {
 
 
     private fun render(jobsList: ArrayList<JobModel>) {
-        fragBinding.recyclerView.adapter = JobAdapter(jobsList,this)
+        fragBinding.recyclerView.adapter = JobAdapter(jobsList,this, jobListViewModel.readOnly.value!!)
         if (jobsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
              fragBinding.jobsNotFound.visibility = View.VISIBLE
@@ -138,7 +138,8 @@ class JobListFragment : Fragment(), JobClickListener {
 
     override fun onJobClick(job: JobModel) {
         val action = JobListFragmentDirections.actionJobListFragmentToJobDetailFragment(job.uid!!)
-        findNavController().navigate(action)
+        if(!jobListViewModel.readOnly.value!!)
+            findNavController().navigate(action)
     }
 
 
@@ -164,7 +165,10 @@ class JobListFragment : Fragment(), JobClickListener {
         fragBinding.swiperefresh.setOnRefreshListener {
             fragBinding.swiperefresh.isRefreshing = true
             showLoader(loader,"Downloading Donations")
-            jobListViewModel.load()
+            if(jobListViewModel.readOnly.value!!)
+                jobListViewModel.loadAll()
+            else
+                jobListViewModel.load()
         }
     }
 
