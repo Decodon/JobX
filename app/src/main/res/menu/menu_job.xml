@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/jobFragment"
         android:orderInCategory="100"
         android:title="@string/action_job"
         app:showAsAction="never" />
