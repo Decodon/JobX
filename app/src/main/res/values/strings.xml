@@ -25,7 +25,7 @@
 
     <string name="action_about">About Us</string>
     <string name="aboutus_title">Homer for President !!</string>
-    <string name="aboutus_message">Hi, I\'m Homer\n\nPlease vote for me.\n\n Please Please Please Please!!</string>
+    <string name="aboutus_message">An App for you to track your jobs and to send invoices</string>
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="button_addJob">Add Job</string>
