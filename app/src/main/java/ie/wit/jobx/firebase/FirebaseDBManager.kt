@@ -11,8 +11,27 @@ object FirebaseDBManager : JobStore {
 
     var database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
+
     override fun findAll(jobsList: MutableLiveData<List<JobModel>>) {
-        TODO("Not yet implemented")
+        database.child("jobs")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    Timber.i("Firebase Job error : ${error.message}")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val localList = ArrayList<JobModel>()
+                    val children = snapshot.children
+                    children.forEach {
+                        val job = it.getValue(JobModel::class.java)
+                        localList.add(job!!)
+                    }
+                    database.child("jobs")
+                        .removeEventListener(this)
+
+                    jobsList.value = localList
+                }
+            })
     }
 
     override fun findAll(userid: String, jobsList: MutableLiveData<List<JobModel>>) {
@@ -86,5 +105,6 @@ object FirebaseDBManager : JobStore {
 
         database.updateChildren(childUpdate)
     }
+
 }
 

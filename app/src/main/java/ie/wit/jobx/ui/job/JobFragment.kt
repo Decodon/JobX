@@ -134,7 +134,7 @@ class JobFragment : Fragment() {
             }
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_job_list, menu)
+                menuInflater.inflate(R.menu.menu_job, menu)
             }
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 // Validate and handle the selected menu item

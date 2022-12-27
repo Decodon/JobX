@@ -10,7 +10,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import ie.wit.jobx.R
+import ie.wit.jobx.firebase.FirebaseDBManager.database
+import ie.wit.jobx.models.JobModel
 import timber.log.Timber
 
 class FirebaseAuthManager(application: Application) {
@@ -78,7 +83,7 @@ class FirebaseAuthManager(application: Application) {
     }
 
     fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        Timber.i( "DonationX firebaseAuthWithGoogle:" + acct.id!!)
+        Timber.i( "JobX firebaseAuthWithGoogle:" + acct.id!!)
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth!!.signInWithCredential(credential)
@@ -95,4 +100,5 @@ class FirebaseAuthManager(application: Application) {
                 }
             }
     }
+
 }
