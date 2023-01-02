@@ -144,24 +144,6 @@
                     app:layout_constraintVertical_bias="0.781" />
 
                 <Button
-                    android:id="@+id/chooseImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/roundedbutton"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:text="@string/button_addImage"
-                    android:textColor="#37474F"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:id="@+id/jobImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    />
-
-                <Button
                     android:id="@+id/jobLocation"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"

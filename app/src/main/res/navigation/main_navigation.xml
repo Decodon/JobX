@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/jobListFragment"
         android:name="ie.wit.jobx.ui.jobList.JobListFragment"
-        android:label="fragment_job_list"
+        android:label="Job List"
         tools:layout="@layout/fragment_job_list" >
         <action
             android:id="@+id/action_jobListFragment_to_jobFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/jobFragment"
         android:name="ie.wit.jobx.ui.job.JobFragment"
-        android:label="fragment_job"
+        android:label="Job"
         tools:layout="@layout/fragment_job" >
         <action
             android:id="@+id/action_jobFragment_to_jobListFragment"
@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/jobDetailFragment"
         android:name="ie.wit.jobx.ui.detail.JobDetailFragment"
-        android:label="fragment_job_detail"
+        android:label="Job Details"
         tools:layout="@layout/fragment_job_detail" >
         <action
             android:id="@+id/action_jobDetailFragment_to_jobListFragment"
