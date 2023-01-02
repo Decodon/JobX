@@ -56,5 +56,7 @@ https://www.geeksforgeeks.org/how-to-create-a-dark-mode-for-a-custom-android-app
 
 #### Bg-02 - Animations changed as weren't working
 
+#### Bg-03 - Removed Images references, not fully inplemented so removed for assignment video
+
 ## Other
 - The use of Posh Git in terminal to keep track of branches and changes
