@@ -30,6 +30,8 @@ This app is designed to help contractors out on the road by allowing them to:
 #### FR-04 - Swipe to Delete and Edit
 
 #### FR-05 - Bottom Drawer
+https://androidcoding.in/2020/05/21/android-bottom-navigation-navigation-drawer/
+https://medium.com/swlh/drawer-layout-and-bottom-nav-in-navigation-component-d286b4b27a8b
 
 #### FR-06 - Display all Jobs with Toogle 
 
@@ -38,11 +40,16 @@ This app is designed to help contractors out on the road by allowing them to:
 #### FR-08 - Bringing back in Map (Not finished but implemented so far)
 
 #### FR-10 - Email an invoice, camera not working as attachment yet
+https://www.youtube.com/watch?v=mxbkPqrMDxA
+https://www.geeksforgeeks.org/how-to-open-camera-through-intent-and-display-captured-image-in-android/
 
 #### FR-11 - Splash Screen
+https://www.youtube.com/watch?v=Iajl3LEmqKo
+
 ## Features Not Implemented: 
 
 #### FR-09 - Night Mode - Close to working, null error 
+https://www.geeksforgeeks.org/how-to-create-a-dark-mode-for-a-custom-android-app-in-kotlin/
 
 ## Bugfixes
 #### Bg-01 - Getting rid of homer, correcting navigation, change icons
