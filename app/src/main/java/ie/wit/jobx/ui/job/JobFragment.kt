@@ -75,7 +75,7 @@ class JobFragment : Fragment() {
         setButtonListener(fragBinding)
         setOnClickListener(fragBinding)
         setLocationButtonListener(fragBinding)
-        setImageButtonListener(fragBinding)
+        //setImageButtonListener(fragBinding)
         setupMenu()
         return root;
     }
@@ -137,11 +137,11 @@ class JobFragment : Fragment() {
         }
     }
 
-    private fun setImageButtonListener(layout: FragmentJobBinding){
-        layout.chooseImage.setOnClickListener {
-            i ("Set Location Pressed")
-        }
-    }
+//    private fun setImageButtonListener(layout: FragmentJobBinding){
+//        layout.chooseImage.setOnClickListener {
+//            i ("Set Location Pressed")
+//        }
+//    }
 
 
     private fun Double.round(decimals: Int): Double {
